@@ -1,5 +1,7 @@
 local Library=
-loadstring(game:HttpGet("https://pastebin.com/raw/DTB6QZfY"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
+
+
 
 local Window = Library:MakeWindow({
     Title = "Matrix Hub v4.3: BROOKHAVEN RP 🏡",
@@ -23,7 +25,7 @@ Tab1:AddParagraph({"🔒 Segurança Reforçada: Proteções adicionais aplicadas
 Tab1:AddParagraph({"🧩 Integrações Futuras: Base pronta para receber sistemas exclusivos do MATRIX Hub."})
 
 local playerName = game.Players.LocalPlayer.Name
-Tab1:AddParagraph({"Olá, " .. playerName .. "! ✅ Seja bem-vindo ao SHNMAXHUB. Aproveite com responsabilidade e bom uso do sistema."})
+Tab1:AddParagraph({"Olá, " .. playerName .. "! ✅ Seja bem-vindo ao MATRIX HUB. Aproveite com responsabilidade e bom uso do sistema."})
 
 Tab1:AddButton({
   Name = "Click Fling Doors",
