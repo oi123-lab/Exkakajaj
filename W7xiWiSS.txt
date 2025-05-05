@@ -4,11 +4,11 @@ loadstring(game:HttpGet("https://pastebin.com/raw/DTB6QZfY"))()
 local Window = Library:MakeWindow({
     Title = "Matrix Hub v4.3: BROOKHAVEN RP 🏡",
     SubTitle = "Por : Matrix Community Rework Version 0.0.2",
-    SaveFolder = "Shnmaxhub Folder"
+    SaveFolder = "MATRIXHUB Folder"
 })
 
 Window:AddMinimizeButton({
-    Button = { Image = "rbxassetid://122216401159246", BackgroundTransparency = 0 }, -- Coloque um ID válido
+    Button = { Image = "rbxassetid://85219327131493", BackgroundTransparency = 0 }, -- Coloque um ID válido
     Corner = { CornerRadius = UDim.new(0, 10) }
 })
 
@@ -20,7 +20,7 @@ Tab1:AddParagraph({"🔧 Interface Reformulada: Nova estrutura visual com foco e
 Tab1:AddParagraph({"⚙️ Funções Reestruturadas: Melhor desempenho e modularidade interna aplicadas."})
 Tab1:AddParagraph({"✅ Estabilidade Aprimorada: Menor chance de falhas e resposta mais rápida do sistema."})
 Tab1:AddParagraph({"🔒 Segurança Reforçada: Proteções adicionais aplicadas para usuários e dados."})
-Tab1:AddParagraph({"🧩 Integrações Futuras: Base pronta para receber sistemas exclusivos do SHNMAXHUB."})
+Tab1:AddParagraph({"🧩 Integrações Futuras: Base pronta para receber sistemas exclusivos do MATRIX Hub."})
 
 local playerName = game.Players.LocalPlayer.Name
 Tab1:AddParagraph({"Olá, " .. playerName .. "! ✅ Seja bem-vindo ao SHNMAXHUB. Aproveite com responsabilidade e bom uso do sistema."})
