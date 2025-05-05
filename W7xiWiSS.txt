@@ -14,7 +14,7 @@ Window:AddMinimizeButton({
 
 local Tab1 = Window:MakeTab({"Home", "rbxassetid://138700382840270"})
 
-local Section = Tab1:AddSection("Créditos: Shelby")
+local Section = Tab1:AddSection("Créditos: Matrix COMMUNITY")
 
 Tab1:AddParagraph({"🔧 Interface Reformulada: Nova estrutura visual com foco em eficiência e organização."})
 Tab1:AddParagraph({"⚙️ Funções Reestruturadas: Melhor desempenho e modularidade interna aplicadas."})
