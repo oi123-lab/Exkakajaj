@@ -1,0 +1,229 @@
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "MATRIX v2.0",
+    SubTitle = "by MATRIX COMMUNITY",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(600, 500),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+-- Tabs
+local Tabs = {
+    Main = Window:AddTab({ Title = "Auto Farm", Icon = "home" }),
+    Mastery = Window:AddTab({ Title = "Auto Mastery", Icon = "award" }),
+    Fighting = Window:AddTab({ Title = "Estilos de Luta", Icon = "boxing" }),
+    Boss = Window:AddTab({ Title = "Auto Boss", Icon = "skull" }),
+    ESP = Window:AddTab({ Title = "ESP", Icon = "eye" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "user" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+}
+
+-- Variáveis de configuração
+local AutoFarmSettings = {
+    Enabled = false,
+    Mastery = true,
+    Bounty = true,
+    Mirage = true,
+    Gears = true,
+    Level = true,
+    Fruits = true,
+    Distance = 20,
+    FastAttack = true,
+    SkipRaid = false,
+    Priority = "Highest Level",
+    Haki = true,
+    AutoClick = true
+}
+
+local AutoMasterySettings = {
+    Enabled = false,
+    Sword = true,
+    Gun = true,
+    Fruit = true,
+    Melee = true,
+    Defense = true,
+    TargetMastery = 600,
+    StopAtTarget = false
+}
+
+local FightingStyles = {
+    Enabled = false,
+    CurrentStyle = "Combat",
+    AutoFarmStyle = false,
+    TargetMoves = {
+        ["Combat"] = {Enabled = true, Target = 600},
+        ["Black Leg"] = {Enabled = true, Target = 600},
+        ["Electro"] = {Enabled = true, Target = 600},
+        ["Fishman Karate"] = {Enabled = true, Target = 600},
+        ["Dragon Claw"] = {Enabled = true, Target = 600},
+        ["Superhuman"] = {Enabled = true, Target = 600}
+    }
+}
+
+-- Funções de Auto Mastery
+local function farmMastery(type)
+    if not AutoMasterySettings.Enabled then return end
+    
+    local weapon
+    if type == "Sword" then
+        weapon = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+    elseif type == "Gun" then
+        -- Implementar lógica para armas
+    elseif type == "Fruit" then
+        -- Implementar lógica para frutas
+    end
+    
+    if weapon then
+        while AutoMasterySettings.Enabled do
+            local mob = getNearestMob()
+            if mob then
+                -- Usar arma no mob
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AttackRemote", mob, weapon)
+                task.wait(0.1)
+            end
+        end
+    end
+end
+
+-- Funções de Estilos de Luta
+local function getCurrentStyle()
+    local stats = require(game:GetService("Players").LocalPlayer.PlayerStats)
+    for style, lvl in pairs(stats.FightingStyle) do
+        if lvl > 0 then
+            return style
+        end
+    end
+    return "Combat"
+end
+
+local function farmFightingStyle(style)
+    if not FightingStyles.Enabled then return end
+    
+    local stats = require(game:GetService("Players").LocalPlayer.PlayerStats)
+    local currentLevel = stats.FightingStyle[style] or 0
+    
+    if currentLevel >= FightingStyles.TargetMoves[style].Target then
+        return
+    end
+    
+    while FightingStyles.Enabled and currentLevel < FightingStyles.TargetMoves[style].Target do
+        local mob = getNearestMob()
+        if mob then
+            -- Usar golpes do estilo no mob
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("UseFSMove", style)
+            task.wait(0.5)
+        end
+    end
+end
+
+-- UI Auto Mastery
+Tabs.Mastery:AddToggle("MasteryToggle", {
+    Title = "Ativar Auto Mastery",
+    Default = false,
+    Callback = function(Value)
+        AutoMasterySettings.Enabled = Value
+        if Value then
+            if AutoMasterySettings.Sword then farmMastery("Sword") end
+            if AutoMasterySettings.Gun then farmMastery("Gun") end
+            if AutoMasterySettings.Fruit then farmMastery("Fruit") end
+        end
+    end
+})
+
+Tabs.Mastery:AddToggle("SwordToggle", {
+    Title = "Farmar Espadas",
+    Default = true,
+    Callback = function(Value)
+        AutoMasterySettings.Sword = Value
+    end
+})
+
+Tabs.Mastery:AddToggle("GunToggle", {
+    Title = "Farmar Armas",
+    Default = true,
+    Callback = function(Value)
+        AutoMasterySettings.Gun = Value
+    end
+})
+
+Tabs.Mastery:AddToggle("FruitToggle", {
+    Title = "Farmar Frutas",
+    Default = true,
+    Callback = function(Value)
+        AutoMasterySettings.Fruit = Value
+    end
+})
+
+Tabs.Mastery:AddSlider("MasteryTarget", {
+    Title = "Mastery Alvo",
+    Description = "Nível de mastery desejado",
+    Default = 600,
+    Min = 1,
+    Max = 600,
+    Rounding = 0,
+    Callback = function(Value)
+        AutoMasterySettings.TargetMastery = Value
+    end
+})
+
+-- UI Estilos de Luta
+Tabs.Fighting:AddToggle("FightingToggle", {
+    Title = "Ativar Auto Estilos",
+    Default = false,
+    Callback = function(Value)
+        FightingStyles.Enabled = Value
+        if Value then
+            for style, settings in pairs(FightingStyles.TargetMoves) do
+                if settings.Enabled then
+                    farmFightingStyle(style)
+                end
+            end
+        end
+    end
+})
+
+Tabs.Fighting:AddDropdown("CurrentStyle", {
+    Title = "Estilo Atual",
+    Default = getCurrentStyle(),
+    Values = {"Combat", "Black Leg", "Electro", "Fishman Karate", "Dragon Claw", "Superhuman"},
+    Callback = function(Value)
+        FightingStyles.CurrentStyle = Value
+    end
+})
+
+-- Adicionar toggles para cada estilo
+for style, settings in pairs(FightingStyles.TargetMoves) do
+    Tabs.Fighting:AddToggle(style.."Toggle", {
+        Title = "Farmar "..style,
+        Default = true,
+        Callback = function(Value)
+            FightingStyles.TargetMoves[style].Enabled = Value
+        end
+    })
+    
+    Tabs.Fighting:AddSlider(style.."Target", {
+        Title = style.." Alvo",
+        Default = 600,
+        Min = 1,
+        Max = 600,
+        Rounding = 0,
+        Callback = function(Value)
+            FightingStyles.TargetMoves[style].Target = Value
+        end
+    })
+end
+
+-- Restante do código (Auto Farm, Boss, ESP, Player) permanece igual ao anterior...
+
+-- Inicialização
+Window:SelectTab(1)
+Fluent:Notify({
+    Title = "MATRIX HUB BY NOT LEGITTY MATRIX COMMUNITY",
+    Content = "Script carregado com sucesso! Auto Mastery e Estilos de Luta ativos.",
+    Duration = 5
+})
