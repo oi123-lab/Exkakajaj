@@ -6,11 +6,18 @@ Library:SetTheme("Default")
 Library:SetTransparency(0.1)
 
 local Window = Library:MakeWindow({
-    Title = "SHNMAXHUB 47.0: BROOKHAVEN RP 🏡",
-    SubTitle = " Por : Shelby ",
-    LoadText = "BROOKHAVEN RP🏡",
-    SaveFolder = "SHNMAX Folder"
+  Title = "SHNMAXHUB 47.0: BROOKHAVEN RP 🏡",
+  SubTitle = " Por : Shelby ",
+  LoadText = "BROOKHAVEN RP🏡",
+  Flags = "redz Hub | Example.lua"
 })
+
+Library:MakeNotify({
+  Title = "SHNMAXSCRIPTS",
+  Text = "TEAM",
+  Time = 5
+})
+
 
 Window:AddMinimizeButton({
     Button = { Image = "rbxassetid://114093388341486", BackgroundTransparency = 0 }, -- Coloque um ID válido
