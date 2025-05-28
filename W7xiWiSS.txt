@@ -1,31 +1,26 @@
 local Library=
-loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Xtentacion178/Dhheh/refs/heads/main/Dhhe"))()
 
+Library:SetTheme("Default")
 
+Library:SetTransparency(0.1)
 
 local Window = Library:MakeWindow({
-    Title = "REDZ HUB V3.6: BROOKHAVEN RP 🏡",
-    SubTitle = "by redz9999",
-    SaveFolder = "MATRIXHUB Folder"
+    Title = "SHNMAXHUB 47.0: BROOKHAVEN RP 🏡",
+    SubTitle = " Por : Shelby ",
+    LoadText = "BROOKHAVEN RP🏡",
+    SaveFolder = "SHNMAX Folder"
 })
 
 Window:AddMinimizeButton({
-    Button = { Image = "rbxassetid://15298567397", BackgroundTransparency = 0 }, -- Coloque um ID válido
+    Button = { Image = "rbxassetid://114093388341486", BackgroundTransparency = 0 }, -- Coloque um ID válido
     Corner = { CornerRadius = UDim.new(0, 10) }
 })
 
 local Tab1 = Window:MakeTab({"Home", "rbxassetid://138700382840270"})
 
-local Section = Tab1:AddSection("By Redz999")
-
-Tab1:AddParagraph({"REDZ HUB REWORK BY REDZ9999"})
-Tab1:AddParagraph({"NEW FUNCTIONS "})
-Tab1:AddParagraph({"the Best hub keyless"})
-Tab1:AddParagraph({"🔒 ENHANCED SECURITY "})
-Tab1:AddParagraph({"🧩 NOT OPEN SOURCE SKIDDERSSS"})
-
 local playerName = game.Players.LocalPlayer.Name
-Tab1:AddParagraph({"Olá, " .. playerName .. "! ✅ Seja bem-vindo ao Redz Hub v3.6"})
+Tab1:AddParagraph({"Olá, " .. playerName .. "!"})
 
 Tab1:AddButton({
   Name = "Click Fling Doors",
@@ -361,6 +356,13 @@ Toggle = Tab1:AddToggle({
 local Tab2 = Window:MakeTab({"Troll", "rbxassetid://10734934585"})
 
 local Section = Tab2:AddSection({"Aba Troll"})
+
+Tab9:AddButton({
+  Name = "Dark Blade(Antecipado)",
+  Callback = function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/6ctYevGX'))()
+  end
+})
 
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
@@ -4046,12 +4048,6 @@ Tab9:AddButton({
     end
 })
 
-Tab9:AddButton({
-  Name = "Dark Blade",
-  Callback = function()
-    loadstring(game:HttpGet('https://pastebin.com/raw/6ctYevGX'))()
-  end
-})
 
 -- Seção: Modificações de Jogador
 local Section = Tab9:AddSection({"<Modificações de Jogador>"})
