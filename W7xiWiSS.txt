@@ -1,3 +1,42 @@
+--// Travar tela por 10 segundos
+local player = game.Players.LocalPlayer
+local camera = workspace.CurrentCamera
+
+-- Travar a câmera
+camera.CameraType = Enum.CameraType.Scriptable
+camera.CFrame = player.Character.HumanoidRootPart.CFrame
+
+-- Mensagem de carregamento
+local loadingGui = Instance.new("ScreenGui")
+loadingGui.Name = "LoadingHub"
+loadingGui.Parent = game.CoreGui
+
+local loadingFrame = Instance.new("Frame")
+loadingFrame.Size = UDim2.new(0, 300, 0, 100)
+loadingFrame.Position = UDim2.new(0.5, -150, 0.5, -50)
+loadingFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+loadingFrame.BackgroundTransparency = 0.3
+loadingFrame.BorderSizePixel = 0
+loadingFrame.Parent = loadingGui
+
+local loadingText = Instance.new("TextLabel")
+loadingText.Size = UDim2.new(1, 0, 1, 0)
+loadingText.Text = ""
+loadingText.TextColor3 = Color3.new(1, 1, 1)
+loadingText.BackgroundTransparency = 1
+loadingText.TextScaled = true
+loadingText.Font = Enum.Font.SourceSansBold
+loadingText.Parent = loadingFrame
+
+-- Espera 10 segundos
+task.wait(10)
+
+-- Destravar a câmera
+camera.CameraType = Enum.CameraType.Custom
+
+-- Remover mensagem de carregamento
+loadingGui:Destroy()
+
 local Library=
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Xtentacion178/Dhheh/refs/heads/main/Dhhe"))()
 
