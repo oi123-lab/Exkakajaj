@@ -17,8 +17,8 @@ Library:SetTransparency(0.1)
 
 local Window = Library:MakeWindow({
   Title = "SHNMAXHUB 47.0 : BROOKHAVEN RP 🏡",
-  SubTitle = " Por : Shelby ",
-  LoadText = " BROOKHAVEN RP🏡 ",
+  SubTitle = "  Por : Shelby ",
+  LoadText = "BROOKHAVEN RP🏡",
   Flags = "redz Hub | Example.lua"
 })
 
