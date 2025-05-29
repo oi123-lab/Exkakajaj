@@ -1,13 +1,3 @@
-
-local function playClickSound()
-    local sound = Instance.new("Sound")
-    sound.SoundId = "rbxassetid://5419098676" -- Som de clique
-    sound.Volume = 1
-    sound.PlayOnRemove = true
-    sound.Parent = workspace
-    sound:Destroy()
-end
-
 local Library=
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Xtentacion178/Dhheh/refs/heads/main/Dhhe"))()
 
@@ -33,6 +23,16 @@ Window:AddMinimizeButton({
     Button = { Image = "rbxassetid://114093388341486", BackgroundTransparency = 0 }, -- Coloque um ID válido
     Corner = { CornerRadius = UDim.new(0, 10) }
 })
+
+
+local function playClickSound()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://5419098676" -- Som de clique
+    sound.Volume = 1
+    sound.PlayOnRemove = true
+    sound.Parent = workspace
+    sound:Destroy()
+end
 
 local Tab1 = Window:MakeTab({"Home", "rbxassetid://138700382840270"})
 
